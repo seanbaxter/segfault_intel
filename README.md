@@ -22,3 +22,8 @@ Segmentation fault (core dumped)
 ```
 
 Intel driver segfaults in glLinkProgram when there is an OpArrayLength sourced on a StorageBuffer variable. This is generated with my own compiler. Maybe the emitted instructions are poisonously different from glslang's, but I can't really tell. Should not be segfaulting driver. Works fine with nvidia.
+
+
+### Update:
+
+I wrote a GLSL one-liner to see if glslang-generated code has the same issue. It does. The example now uses glslc's generated segfault.spv.

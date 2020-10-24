@@ -66,7 +66,7 @@ int main() {
   glDebugMessageCallback(debug_callback, nullptr);
 
   GLuint cs = glCreateShader(GL_COMPUTE_SHADER);
-  create_shader(cs, "length.spv", "_Z9comp_mainv");
+  create_shader(cs, "segfault.spv", "main");
 
   GLuint program = glCreateProgram();
   glAttachShader(program, cs);
