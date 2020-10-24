@@ -26,4 +26,25 @@ Intel driver segfaults in glLinkProgram when there is an OpArrayLength sourced o
 
 ### Update:
 
+[**segfault.comp**](segfault.comp)
+```cpp
+#version 460
+
+layout(local_size_x=32) in;
+
+layout(binding=0)
+buffer MyBuffer1 {
+	vec4 data0[];
+};
+
+layout(binding=1)
+buffer MyBuffer2 {
+	int len;
+};
+
+void main() {
+	len = data0.length();
+}
+```
+
 I wrote a GLSL one-liner to see if glslang-generated code has the same issue. It does. The example now uses glslc's generated segfault.spv.
